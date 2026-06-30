@@ -1,16 +1,18 @@
+'use client';
+
 import { Box, Container, Grid2 as Grid, Typography } from '@mui/material';
 import CodeIcon from '@mui/icons-material/Code';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import PaletteIcon from '@mui/icons-material/Palette';
 import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
 import WidgetsIcon from '@mui/icons-material/Widgets';
-import { skills } from '../data/content';
+import type { Skill, SkillIcon } from '@/types/portfolio';
 import { SkillsCrystal } from './SkillsCrystal';
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
-import { colors } from '../theme';
+import { colors } from '@/theme/theme';
 
-const iconMap = {
+const iconMap: Record<SkillIcon, typeof CodeIcon> = {
   polymer: WidgetsIcon,
   terminal: TerminalIcon,
   code: CodeIcon,
@@ -20,7 +22,11 @@ const iconMap = {
 
 const iconColors = ['primary.main', 'text.primary', 'secondary.main', 'primary.main', colors.tertiary];
 
-export function Skills() {
+interface SkillsProps {
+  skills: Skill[];
+}
+
+export function Skills({ skills }: SkillsProps) {
   return (
     <Box component="section" id="skills" sx={{ py: { xs: 10, md: 15 } }}>
       <Container maxWidth="lg">
@@ -34,7 +40,7 @@ export function Skills() {
               {skills.map((skill, i) => {
                 const Icon = iconMap[skill.icon];
                 return (
-                  <Grid key={skill.name} size={{ xs: 6, md: 4 }}>
+                  <Grid key={skill.id} size={{ xs: 6, md: 4 }}>
                     <Reveal delay={i * 0.1}>
                       <Box
                         sx={{
@@ -43,7 +49,7 @@ export function Skills() {
                           flexDirection: 'column',
                           alignItems: 'center',
                           gap: 2,
-                          border: `1px solid #222`,
+                          border: '1px solid #222',
                           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                           '&:hover': {
                             borderColor: '#444',
@@ -53,10 +59,10 @@ export function Skills() {
                           },
                         }}
                       >
-                        <Icon sx={{ fontSize: 40, color: iconColors[i] as string }} />
+                        <Icon sx={{ fontSize: 40, color: iconColors[i] }} />
                         <Typography
                           sx={{
-                            fontFamily: '"JetBrains Mono", monospace',
+                            fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
                             fontSize: '0.75rem',
                             fontWeight: 600,
                             letterSpacing: '0.1em',
@@ -75,13 +81,7 @@ export function Skills() {
 
           <Grid size={{ xs: 12, lg: 4 }}>
             <Reveal delay={0.6}>
-              <Box
-                sx={{
-                  position: 'relative',
-                  height: { xs: 300, lg: 400 },
-                  minHeight: 300,
-                }}
-              >
+              <Box sx={{ position: 'relative', height: { xs: 300, lg: 400 }, minHeight: 300 }}>
                 <SkillsCrystal />
               </Box>
             </Reveal>

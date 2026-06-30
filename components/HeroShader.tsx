@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -57,12 +59,7 @@ export function HeroShader() {
       u_resolution: { value: new THREE.Vector2() },
     };
 
-    const material = new THREE.ShaderMaterial({
-      uniforms,
-      vertexShader,
-      fragmentShader,
-    });
-
+    const material = new THREE.ShaderMaterial({ uniforms, vertexShader, fragmentShader });
     const mesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
     scene.add(mesh);
 
@@ -90,21 +87,14 @@ export function HeroShader() {
       renderer.dispose();
       material.dispose();
       mesh.geometry.dispose();
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
+      container.removeChild(renderer.domElement);
     };
   }, []);
 
   return (
     <div
       ref={containerRef}
-      style={{
-        position: 'absolute',
-        inset: 0,
-        zIndex: 0,
-        pointerEvents: 'none',
-      }}
+      style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}
     />
   );
 }

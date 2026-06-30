@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -31,7 +33,6 @@ export function SkillsCrystal() {
       }),
     );
     scene.add(crystal);
-
     scene.add(new THREE.AmbientLight(0xffffff, 0.5));
     const pointLight = new THREE.PointLight(0x007acc, 1);
     pointLight.position.set(5, 5, 5);
@@ -63,21 +64,11 @@ export function SkillsCrystal() {
       renderer.dispose();
       crystal.geometry.dispose();
       (crystal.material as THREE.Material).dispose();
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
+      container.removeChild(renderer.domElement);
     };
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-      }}
-    />
+    <div ref={containerRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
   );
 }

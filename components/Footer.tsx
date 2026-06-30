@@ -1,15 +1,18 @@
 import { Box, Container, Link, Stack, Typography } from '@mui/material';
-import { profile } from '../data/content';
-import { colors } from '../theme';
+import type { Profile } from '@/types/portfolio';
+import { colors } from '@/theme/theme';
 
-const footerLinks = [
+const footerLinks = (profile: Profile) => [
   { label: 'Github', href: profile.github },
   { label: 'LinkedIn', href: profile.linkedin },
-  { label: 'Twitter', href: '#' },
   { label: 'Email', href: `mailto:${profile.email}` },
 ];
 
-export function Footer() {
+interface FooterProps {
+  profile: Profile;
+}
+
+export function Footer({ profile }: FooterProps) {
   return (
     <Box
       component="footer"
@@ -31,7 +34,7 @@ export function Footer() {
       >
         <Typography
           sx={{
-            fontFamily: '"JetBrains Mono", monospace',
+            fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
             fontSize: '0.75rem',
             fontWeight: 600,
             letterSpacing: '0.1em',
@@ -39,18 +42,18 @@ export function Footer() {
             color: 'text.secondary',
           }}
         >
-          © 2024 {profile.name}
+          © {new Date().getFullYear()} {profile.name}
         </Typography>
 
         <Stack direction="row" spacing={4}>
-          {footerLinks.map((link) => (
+          {footerLinks(profile).map((link) => (
             <Link
               key={link.label}
               href={link.href}
               target={link.href.startsWith('http') ? '_blank' : undefined}
               rel="noopener noreferrer"
               sx={{
-                fontFamily: '"JetBrains Mono", monospace',
+                fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
                 fontSize: '0.875rem',
                 color: 'text.secondary',
                 textDecoration: 'none',

@@ -1,32 +1,63 @@
 # Sepideh Nilforoushan — Portfolio
 
-A dark-themed front-end engineer portfolio built with **React**, **TypeScript**, **Material UI**, and **Three.js**.
+Full-stack portfolio built with **Next.js**, **Material UI**, **Prisma**, and **SQLite**.
+
+## Stack
+
+| Layer | Tech |
+|-------|------|
+| Frontend | Next.js 15, React 19, MUI |
+| Backend | Next.js API Routes |
+| Database | Prisma + SQLite (dev) / PostgreSQL (prod) |
+| 3D / Shader | Three.js |
 
 ## Features
 
-- Responsive layout (desktop nav + mobile drawer)
-- Animated WebGL hero shader background
-- Rotating 3D crystal in the skills section
-- Scroll-reveal animations
-- Sections: Hero, Skills, Education, Experience, Projects, Contact
+- Server-rendered portfolio content from database
+- REST API: `/api/portfolio`, `/api/projects`, `/api/contact`
+- Contact form saves messages to database
+- Animated hero shader + skills section 3D crystal
+- Responsive MUI design
 
 ## Getting Started
 
 ```bash
 npm install
-npm run dev
+npm run db:push    # Create database tables
+npm run db:seed    # Seed with your portfolio data
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+## API Endpoints
 
-## Build
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/portfolio` | Full portfolio data |
+| GET | `/api/projects` | All projects |
+| POST | `/api/contact` | Submit contact form `{ name, email, message }` |
+| GET | `/api/contact` | List contact messages (admin) |
+
+## Database
+
+Local dev uses SQLite (`prisma/dev.db`). For production on Vercel, use PostgreSQL:
+
+1. Create a free database on [Neon](https://neon.tech) or [Supabase](https://supabase.com)
+2. Set `DATABASE_URL` in your hosting provider
+3. Update `prisma/schema.prisma` provider to `postgresql`
+4. Run `npx prisma db push && npx prisma db seed`
+
+View data: `npm run db:studio`
+
+## Deploy (Vercel)
 
 ```bash
-npm run build
-npm run preview
+npx vercel
 ```
+
+Set `DATABASE_URL` to your PostgreSQL connection string in Vercel environment variables.
 
 ## Customize
 
-Edit `src/data/content.ts` to update your profile, skills, projects, and links.
-# portfolio
+- **Content**: Edit `prisma/seed.ts` then run `npm run db:seed`
+- **Theme**: `theme/theme.ts`
+- **Components**: `components/`

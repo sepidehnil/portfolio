@@ -1,18 +1,21 @@
 import { Box, Card, CardContent, Container, Grid2 as Grid, Link, Typography } from '@mui/material';
-import { projects, profile } from '../data/content';
+import Image from 'next/image';
+import type { Profile, Project } from '@/types/portfolio';
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
-import { colors } from '../theme';
+import { colors } from '@/theme/theme';
 
-export function Projects() {
+interface ProjectsProps {
+  projects: Project[];
+  profile: Profile;
+}
+
+export function Projects({ projects, profile }: ProjectsProps) {
   return (
     <Box
       component="section"
       id="work"
-      sx={{
-        py: { xs: 10, md: 15 },
-        bgcolor: `${colors.surfaceContainerLow}33`,
-      }}
+      sx={{ py: { xs: 10, md: 15 }, bgcolor: `${colors.surfaceContainerLow}33` }}
     >
       <Container maxWidth="lg">
         <Reveal>
@@ -24,7 +27,7 @@ export function Projects() {
               rel="noopener noreferrer"
               sx={{
                 display: { xs: 'none', md: 'block' },
-                fontFamily: '"JetBrains Mono", monospace',
+                fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
                 fontSize: '0.75rem',
                 fontWeight: 600,
                 letterSpacing: '0.1em',
@@ -41,7 +44,7 @@ export function Projects() {
 
         <Grid container spacing={5}>
           {projects.map((project, i) => (
-            <Grid key={project.title} size={{ xs: 12, md: 6, lg: 4 }}>
+            <Grid key={project.id} size={{ xs: 12, md: 6, lg: 4 }}>
               <Reveal delay={i * 0.1}>
                 <Card
                   sx={{
@@ -63,21 +66,14 @@ export function Projects() {
                   }}
                 >
                   {project.image && (
-                    <Box
-                      sx={{
-                        height: 256,
-                        overflow: 'hidden',
-                        position: 'relative',
-                        '& img': {
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                          transition: 'transform 0.7s',
-                        },
-                        '&:hover img': { transform: 'scale(1.05)' },
-                      }}
-                    >
-                      <img src={project.image} alt={project.title} loading="lazy" />
+                    <Box sx={{ height: 256, overflow: 'hidden', position: 'relative' }}>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        style={{ objectFit: 'cover', transition: 'transform 0.7s' }}
+                      />
                       <Box
                         sx={{
                           position: 'absolute',
@@ -94,12 +90,13 @@ export function Projects() {
                           key={tag}
                           component="span"
                           sx={{
-                            fontFamily: '"JetBrains Mono", monospace',
+                            fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
                             fontSize: '10px',
                             py: 0.5,
                             px: 1,
                             bgcolor: colors.surfaceContainer,
-                            color: j === 0 ? colors.primaryFixedDim : j === 1 ? colors.secondary : 'text.secondary',
+                            color:
+                              j === 0 ? colors.primaryFixedDim : j === 1 ? colors.secondary : 'text.secondary',
                             borderLeft: `1px solid ${j === 0 ? colors.primary : j === 1 ? colors.secondary : colors.outline}`,
                           }}
                         >

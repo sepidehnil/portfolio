@@ -1,10 +1,14 @@
 import { Box, Chip, Container, List, ListItem, ListItemText, Typography } from '@mui/material';
-import { experience } from '../data/content';
+import type { Experience as ExperienceType } from '@/types/portfolio';
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
-import { colors } from '../theme';
+import { colors } from '@/theme/theme';
 
-export function WorkExperience() {
+interface WorkExperienceProps {
+  experience: ExperienceType;
+}
+
+export function WorkExperience({ experience }: WorkExperienceProps) {
   return (
     <Box component="section" id="experience" sx={{ py: { xs: 10, md: 15 } }}>
       <Container maxWidth="lg">
@@ -41,7 +45,7 @@ export function WorkExperience() {
               <Chip
                 label={experience.period}
                 sx={{
-                  fontFamily: '"JetBrains Mono", monospace',
+                  fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
                   fontSize: '0.875rem',
                   color: 'secondary.main',
                   bgcolor: colors.surfaceContainer,

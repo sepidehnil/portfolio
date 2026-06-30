@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-const colors = {
+export const colors = {
   background: '#131313',
   surface: '#131313',
   surfaceContainer: '#201f1f',
@@ -80,27 +80,15 @@ export const theme = createTheme({
           color: colors.onSurface,
           WebkitFontSmoothing: 'antialiased',
         },
-        '::-webkit-scrollbar': {
-          width: 6,
-        },
-        '::-webkit-scrollbar-track': {
-          background: colors.surfaceContainerLowest,
-        },
-        '::-webkit-scrollbar-thumb': {
-          background: '#333333',
-          borderRadius: 10,
-        },
-        '::-webkit-scrollbar-thumb:hover': {
-          background: '#444444',
-        },
+        '::-webkit-scrollbar': { width: 6 },
+        '::-webkit-scrollbar-track': { background: colors.surfaceContainerLowest },
+        '::-webkit-scrollbar-thumb': { background: '#333333', borderRadius: 10 },
+        '::-webkit-scrollbar-thumb:hover': { background: '#444444' },
       },
     },
     MuiButton: {
       styleOverrides: {
-        root: {
-          borderRadius: 2,
-          padding: '12px 32px',
-        },
+        root: { borderRadius: 2, padding: '12px 32px' },
       },
     },
     MuiAppBar: {
@@ -115,5 +103,3 @@ export const theme = createTheme({
     },
   },
 });
-
-export { colors };

@@ -1,10 +1,14 @@
 import { Box, Container, Typography } from '@mui/material';
-import { education } from '../data/content';
+import type { Education as EducationType } from '@/types/portfolio';
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
-import { colors } from '../theme';
+import { colors } from '@/theme/theme';
 
-export function Education() {
+interface EducationProps {
+  education: EducationType;
+}
+
+export function Education({ education }: EducationProps) {
   return (
     <Box component="section" id="about" sx={{ py: { xs: 10, md: 15 } }}>
       <Container maxWidth="lg">
@@ -28,7 +32,7 @@ export function Education() {
             </Typography>
             <Typography
               sx={{
-                fontFamily: '"JetBrains Mono", monospace',
+                fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
                 fontSize: '0.875rem',
                 color: 'secondary.main',
               }}

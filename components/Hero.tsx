@@ -1,9 +1,15 @@
-import { Box, Button, Chip, Container, Stack, Typography } from '@mui/material';
-import { profile } from '../data/content';
-import { HeroShader } from './HeroShader';
-import { colors } from '../theme';
+'use client';
 
-export function Hero() {
+import { Box, Button, Chip, Container, Stack, Typography } from '@mui/material';
+import type { Profile } from '@/types/portfolio';
+import { HeroShader } from './HeroShader';
+import { colors } from '@/theme/theme';
+
+interface HeroProps {
+  profile: Profile;
+}
+
+export function Hero({ profile }: HeroProps) {
   const parts = profile.heroHeading.split(profile.heroHighlight);
 
   return (
@@ -52,7 +58,7 @@ export function Hero() {
             backdropFilter: 'blur(8px)',
             border: `1px solid ${colors.outlineVariant}`,
             color: 'text.secondary',
-            fontFamily: '"JetBrains Mono", monospace',
+            fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
             fontSize: '0.875rem',
             '& .MuiChip-icon': { ml: 1 },
           }}
@@ -86,7 +92,7 @@ export function Hero() {
           <Button
             variant="contained"
             color="primary"
-            href="#work"
+            onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
             sx={{
               px: 4,
               py: 1.75,
@@ -101,16 +107,13 @@ export function Hero() {
           </Button>
           <Button
             variant="outlined"
-            href="#contact"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             sx={{
               px: 4,
               py: 1.75,
               borderColor: colors.outlineVariant,
               color: 'text.primary',
-              '&:hover': {
-                borderColor: colors.outlineVariant,
-                bgcolor: `${colors.surfaceBright}33`,
-              },
+              '&:hover': { borderColor: colors.outlineVariant, bgcolor: `${colors.surfaceBright}33` },
             }}
           >
             Get In Touch

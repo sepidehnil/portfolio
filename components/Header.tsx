@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import {
   AppBar,
@@ -16,15 +18,20 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { navLinks, profile } from '../data/content';
-import { colors } from '../theme';
+import type { Profile } from '@/types/portfolio';
+import { navLinks } from '@/types/portfolio';
+import { colors } from '@/theme/theme';
 
 const scrollTo = (href: string) => {
   const id = href.replace('#', '');
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 };
 
-export function Header() {
+interface HeaderProps {
+  profile: Profile;
+}
+
+export function Header({ profile }: HeaderProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -66,7 +73,7 @@ export function Header() {
                   onClick={() => scrollTo(link.href)}
                   sx={{
                     color: i === 0 ? 'primary.main' : 'text.secondary',
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
                     fontSize: '1rem',
                     fontWeight: i === 0 ? 700 : 400,
                     textTransform: 'none',
@@ -93,13 +100,7 @@ export function Header() {
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        PaperProps={{
-          sx: {
-            width: '100%',
-            bgcolor: colors.background,
-            p: 3,
-          },
-        }}
+        PaperProps={{ sx: { width: '100%', bgcolor: colors.background, p: 3 } }}
       >
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 6 }}>
           <Typography variant="h2" sx={{ fontSize: '1.25rem', color: 'primary.main', fontWeight: 700 }}>
@@ -121,11 +122,7 @@ export function Header() {
               >
                 <ListItemText
                   primary={link.label}
-                  primaryTypographyProps={{
-                    fontSize: '2rem',
-                    fontWeight: 700,
-                    color: 'primary.main',
-                  }}
+                  primaryTypographyProps={{ fontSize: '2rem', fontWeight: 700, color: 'primary.main' }}
                 />
               </ListItemButton>
             </ListItem>
