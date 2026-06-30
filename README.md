@@ -29,3 +29,4 @@ npm run preview
 ## Customize
 
 Edit `src/data/content.ts` to update your profile, skills, projects, and links.
+# portfolio
