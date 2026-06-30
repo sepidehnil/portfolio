@@ -2,6 +2,7 @@
 
 import { Box, Button, Chip, Container, Stack, Typography } from '@mui/material';
 import type { Profile } from '@/types/portfolio';
+import { HIGHLIGHT_TERMS } from '@/types/portfolio';
 import { HeroShader } from './HeroShader';
 import { colors } from '@/theme/theme';
 
@@ -75,10 +76,10 @@ export function Hero({ profile }: HeroProps) {
         <Typography
           variant="body1"
           color="text.secondary"
-          sx={{ maxWidth: 640, mx: 'auto', mb: 5, fontSize: { xs: '1rem', md: '1.125rem' } }}
+          sx={{ maxWidth: 720, mx: 'auto', mb: 5, fontSize: { xs: '1rem', md: '1.125rem' } }}
         >
-          {profile.bio.split(/(React|Next\.js|TypeScript)/).map((part, i) =>
-            ['React', 'Next.js', 'TypeScript'].includes(part) ? (
+          {profile.bio.split(new RegExp(`(${HIGHLIGHT_TERMS.join('|')})`)).map((part, i) =>
+            (HIGHLIGHT_TERMS as readonly string[]).includes(part) ? (
               <Box key={i} component="span" sx={{ color: 'text.primary', fontWeight: 600 }}>
                 {part}
               </Box>

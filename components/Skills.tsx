@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Container, Grid2 as Grid, Typography } from '@mui/material';
+import ApiIcon from '@mui/icons-material/Api';
 import CodeIcon from '@mui/icons-material/Code';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import PaletteIcon from '@mui/icons-material/Palette';
@@ -18,9 +19,17 @@ const iconMap: Record<SkillIcon, typeof CodeIcon> = {
   code: CodeIcon,
   settings_input_component: SettingsInputComponentIcon,
   palette: PaletteIcon,
+  api: ApiIcon,
 };
 
-const iconColors = ['primary.main', 'text.primary', 'secondary.main', 'primary.main', colors.tertiary];
+const iconColors = [
+  'primary.main',
+  'text.primary',
+  'secondary.main',
+  'primary.main',
+  colors.tertiary,
+  'secondary.main',
+];
 
 interface SkillsProps {
   skills: Skill[];
@@ -40,7 +49,7 @@ export function Skills({ skills }: SkillsProps) {
               {skills.map((skill, i) => {
                 const Icon = iconMap[skill.icon];
                 return (
-                  <Grid key={skill.id} size={{ xs: 6, md: 4 }}>
+                  <Grid key={skill.id} size={{ xs: 6, sm: 4, md: 4 }}>
                     <Reveal delay={i * 0.1}>
                       <Box
                         sx={{

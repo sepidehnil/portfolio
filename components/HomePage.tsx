@@ -24,7 +24,7 @@ export function HomePage({ data }: HomePageProps) {
         <Hero profile={data.profile} />
         <Skills skills={data.skills} />
         <Education education={data.education} />
-        <WorkExperience experience={data.experience} />
+        <WorkExperience experiences={data.experiences} />
         <Projects projects={data.projects} profile={data.profile} />
         <Contact profile={data.profile} />
       </main>

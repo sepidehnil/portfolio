@@ -3,12 +3,15 @@ export type SkillIcon =
   | 'terminal'
   | 'code'
   | 'settings_input_component'
-  | 'palette';
+  | 'palette'
+  | 'api';
 
 export interface Profile {
   name: string;
   title: string;
   email: string;
+  phone: string;
+  location: string;
   tagline: string;
   heroHeading: string;
   heroHighlight: string;
@@ -32,6 +35,7 @@ export interface Project {
 }
 
 export interface Experience {
+  id: number;
   role: string;
   company: string;
   period: string;
@@ -48,7 +52,7 @@ export interface PortfolioData {
   profile: Profile;
   skills: Skill[];
   projects: Project[];
-  experience: Experience;
+  experiences: Experience[];
   education: Education;
 }
 
@@ -58,3 +62,5 @@ export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ] as const;
+
+export const HIGHLIGHT_TERMS = ['React', 'Next.js', 'Redux', 'TypeScript'] as const;

@@ -12,6 +12,8 @@ model Profile {
   name           String
   title          String
   email          String
+  phone          String
+  location       String
   tagline        String
   heroHeading    String
   heroHighlight  String
@@ -37,11 +39,12 @@ model Project {
 }
 
 model Experience {
-  id         Int    @id @default(1)
+  id         Int    @id @default(autoincrement())
   role       String
   company    String
   period     String
   highlights String
+  order      Int    @default(0)
 }
 
 model Education {

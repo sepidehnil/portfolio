@@ -44,7 +44,7 @@ export function Projects({ projects, profile }: ProjectsProps) {
 
         <Grid container spacing={5}>
           {projects.map((project, i) => (
-            <Grid key={project.id} size={{ xs: 12, md: 6, lg: 4 }}>
+            <Grid key={project.id} size={{ xs: 12, sm: 6, lg: 3 }}>
               <Reveal delay={i * 0.1}>
                 <Card
                   sx={{
