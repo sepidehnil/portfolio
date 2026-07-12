@@ -35,6 +35,8 @@ model Project {
   description String
   tags        String
   image       String?
+  liveUrl     String?
+  githubUrl   String?
   order       Int     @default(0)
 }
 

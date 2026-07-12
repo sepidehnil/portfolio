@@ -1,63 +1,49 @@
 # Sepideh Nilforoushan — Portfolio
 
-Full-stack portfolio built with **Next.js**, **Material UI**, **Prisma**, and **SQLite**.
+Modern full-stack portfolio built with **Next.js**, **Tailwind CSS**, **Framer Motion**, and **Prisma**.
 
 ## Stack
 
 | Layer | Tech |
 |-------|------|
-| Frontend | Next.js 15, React 19, MUI |
+| Frontend | Next.js 15, React 19, Tailwind CSS v4, Framer Motion |
 | Backend | Next.js API Routes |
 | Database | Prisma + SQLite (dev) / PostgreSQL (prod) |
-| 3D / Shader | Three.js |
 
-## Features
+## Sections
 
-- Server-rendered portfolio content from database
-- REST API: `/api/portfolio`, `/api/projects`, `/api/contact`
-- Contact form saves messages to database
-- Animated hero shader + skills section 3D crystal
-- Responsive MUI design
+- **Hero** — animated intro with gradient background and CTAs
+- **Skills** — responsive grid with hover animations
+- **Projects** — project cards loaded from database
+- **Experience** — work history and education
+- **Contact** — form with validation (saved to database via API)
 
 ## Getting Started
 
 ```bash
 npm install
-npm run db:push    # Create database tables
-npm run db:seed    # Seed with your portfolio data
-npm run dev        # http://localhost:3000
+npm run db:push
+npm run db:seed
+npm run dev
 ```
 
-## API Endpoints
+Open [http://localhost:3000](http://localhost:3000)
+
+## Build
+
+```bash
+npm run build
+npm start
+```
+
+## API
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/api/portfolio` | Full portfolio data |
-| GET | `/api/projects` | All projects |
-| POST | `/api/contact` | Submit contact form `{ name, email, message }` |
-| GET | `/api/contact` | List contact messages (admin) |
-
-## Database
-
-Local dev uses SQLite (`prisma/dev.db`). For production on Vercel, use PostgreSQL:
-
-1. Create a free database on [Neon](https://neon.tech) or [Supabase](https://supabase.com)
-2. Set `DATABASE_URL` in your hosting provider
-3. Update `prisma/schema.prisma` provider to `postgresql`
-4. Run `npx prisma db push && npx prisma db seed`
-
-View data: `npm run db:studio`
-
-## Deploy (Vercel)
-
-```bash
-npx vercel
-```
-
-Set `DATABASE_URL` to your PostgreSQL connection string in Vercel environment variables.
+| GET | `/api/projects` | Projects list |
+| POST | `/api/contact` | Submit contact form |
 
 ## Customize
 
-- **Content**: Edit `prisma/seed.ts` then run `npm run db:seed`
-- **Theme**: `theme/theme.ts`
-- **Components**: `components/`
+Edit `prisma/seed.ts` then run `npm run db:seed` to update content.

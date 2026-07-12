@@ -32,6 +32,8 @@ export interface Project {
   description: string;
   tags: string[];
   image: string | null;
+  liveUrl: string | null;
+  githubUrl: string | null;
 }
 
 export interface Experience {

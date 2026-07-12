@@ -1,9 +1,10 @@
-import { Box, Card, CardContent, Container, Grid2 as Grid, Link, Typography } from '@mui/material';
+'use client';
+
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import type { Profile, Project } from '@/types/portfolio';
-import { SectionTitle } from './SectionTitle';
-import { Reveal } from './Reveal';
-import { colors } from '@/theme/theme';
+import { SectionHeading } from './SectionHeading';
+import { staggerContainer, scaleIn } from '@/lib/motion';
 
 interface ProjectsProps {
   projects: Project[];
@@ -12,111 +13,98 @@ interface ProjectsProps {
 
 export function Projects({ projects, profile }: ProjectsProps) {
   return (
-    <Box
-      component="section"
-      id="work"
-      sx={{ py: { xs: 10, md: 15 }, bgcolor: `${colors.surfaceContainerLow}33` }}
-    >
-      <Container maxWidth="lg">
-        <Reveal>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: 8 }}>
-            <SectionTitle title="Featured Projects" />
-            <Link
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                display: { xs: 'none', md: 'block' },
-                fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'text.secondary',
-                textDecoration: 'none',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              View Github Archive →
-            </Link>
-          </Box>
-        </Reveal>
+    <section id="work" className="py-20 md:py-28 px-5 md:px-8 bg-surface/50">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 md:mb-16">
+          <SectionHeading
+            label="Portfolio"
+            title="Featured Projects"
+            description="Selected work showcasing front-end engineering, performance, and UI craft."
+          />
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex font-mono text-xs font-semibold uppercase tracking-wider text-muted hover:text-primary transition-colors shrink-0"
+          >
+            View GitHub →
+          </a>
+        </div>
 
-        <Grid container spacing={5}>
-          {projects.map((project, i) => (
-            <Grid key={project.id} size={{ xs: 12, sm: 6, lg: 3 }}>
-              <Reveal delay={i * 0.1}>
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    bgcolor: colors.background,
-                    border: '1px solid #222',
-                    borderRadius: 0,
-                    boxShadow: 'none',
-                    overflow: 'hidden',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    '&:hover': {
-                      borderColor: '#444',
-                      bgcolor: '#1a1a1a',
-                      transform: 'translateY(-4px)',
-                      boxShadow: `0 10px 30px -10px ${colors.primary}26`,
-                    },
-                  }}
-                >
-                  {project.image && (
-                    <Box sx={{ height: 256, overflow: 'hidden', position: 'relative' }}>
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        style={{ objectFit: 'cover', transition: 'transform 0.7s' }}
-                      />
-                      <Box
-                        sx={{
-                          position: 'absolute',
-                          inset: 0,
-                          background: `linear-gradient(to top, ${colors.background}CC, transparent)`,
-                        }}
-                      />
-                    </Box>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        >
+          {projects.map((project) => (
+            <motion.article
+              key={project.id}
+              variants={scaleIn}
+              whileHover={{ y: -6 }}
+              className="group flex flex-col overflow-hidden border border-border rounded-xl bg-background hover:border-primary/30 transition-colors"
+            >
+              {project.image && (
+                <div className="relative h-48 md:h-56 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+                </div>
+              )}
+              <div className="flex flex-col flex-1 p-6 md:p-8">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag, j) => (
+                    <span
+                      key={tag}
+                      className={`font-mono text-[10px] py-1 px-2 border-l-2 bg-surface-elevated ${
+                        j === 0
+                          ? 'border-primary text-primary'
+                          : j === 1
+                            ? 'border-secondary text-secondary'
+                            : 'border-border text-muted'
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-muted text-sm leading-relaxed flex-1 mb-6">{project.description}</p>
+                <div className="flex flex-wrap gap-4 pt-4 border-t border-border">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs font-semibold uppercase tracking-wider text-primary hover:underline"
+                    >
+                      Live Demo →
+                    </a>
                   )}
-                  <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 3 }}>
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
-                      {project.tags.map((tag, j) => (
-                        <Typography
-                          key={tag}
-                          component="span"
-                          sx={{
-                            fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
-                            fontSize: '10px',
-                            py: 0.5,
-                            px: 1,
-                            bgcolor: colors.surfaceContainer,
-                            color:
-                              j === 0 ? colors.primaryFixedDim : j === 1 ? colors.secondary : 'text.secondary',
-                            borderLeft: `1px solid ${j === 0 ? colors.primary : j === 1 ? colors.secondary : colors.outline}`,
-                          }}
-                        >
-                          {tag}
-                        </Typography>
-                      ))}
-                    </Box>
-                    <Typography variant="h3" sx={{ mb: 1.5, fontSize: '1.25rem' }}>
-                      {project.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ flexGrow: 1 }}>
-                      {project.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Reveal>
-            </Grid>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs font-semibold uppercase tracking-wider text-muted hover:text-foreground transition-colors"
+                    >
+                      Source Code →
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.article>
           ))}
-        </Grid>
-      </Container>
-    </Box>
+        </motion.div>
+      </div>
+    </section>
   );
 }

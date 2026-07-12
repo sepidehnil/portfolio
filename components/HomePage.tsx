@@ -1,14 +1,12 @@
 'use client';
 
-import { Toolbar } from '@mui/material';
 import type { PortfolioData } from '@/types/portfolio';
-import { Header } from './Header';
+import { Navbar } from './Navbar';
 import { Hero } from './Hero';
 import { Skills } from './Skills';
-import { Education } from './Education';
-import { WorkExperience } from './WorkExperience';
 import { Projects } from './Projects';
-import { Contact } from './Contact';
+import { Experience } from './Experience';
+import { ContactForm } from './ContactForm';
 import { Footer } from './Footer';
 
 interface HomePageProps {
@@ -18,15 +16,13 @@ interface HomePageProps {
 export function HomePage({ data }: HomePageProps) {
   return (
     <>
-      <Header profile={data.profile} />
-      <Toolbar />
+      <Navbar profile={data.profile} />
       <main>
         <Hero profile={data.profile} />
         <Skills skills={data.skills} />
-        <Education education={data.education} />
-        <WorkExperience experiences={data.experiences} />
         <Projects projects={data.projects} profile={data.profile} />
-        <Contact profile={data.profile} />
+        <Experience experiences={data.experiences} education={data.education} />
+        <ContactForm profile={data.profile} />
       </main>
       <Footer profile={data.profile} />
     </>

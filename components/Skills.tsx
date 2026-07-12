@@ -1,35 +1,18 @@
 'use client';
 
-import { Box, Container, Grid2 as Grid, Typography } from '@mui/material';
-import ApiIcon from '@mui/icons-material/Api';
-import CodeIcon from '@mui/icons-material/Code';
-import TerminalIcon from '@mui/icons-material/Terminal';
-import PaletteIcon from '@mui/icons-material/Palette';
-import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
-import WidgetsIcon from '@mui/icons-material/Widgets';
-import type { Skill, SkillIcon } from '@/types/portfolio';
-import { SkillsCrystal } from './SkillsCrystal';
-import { SectionTitle } from './SectionTitle';
-import { Reveal } from './Reveal';
-import { colors } from '@/theme/theme';
+import { motion } from 'framer-motion';
+import type { Skill } from '@/types/portfolio';
+import { SectionHeading } from './SectionHeading';
+import { fadeInUp, staggerContainer, scaleIn } from '@/lib/motion';
 
-const iconMap: Record<SkillIcon, typeof CodeIcon> = {
-  polymer: WidgetsIcon,
-  terminal: TerminalIcon,
-  code: CodeIcon,
-  settings_input_component: SettingsInputComponentIcon,
-  palette: PaletteIcon,
-  api: ApiIcon,
+const skillIcons: Record<string, string> = {
+  polymer: '⚛',
+  terminal: '▸',
+  code: '{ }',
+  palette: '◈',
+  settings_input_component: '◇',
+  api: '↔',
 };
-
-const iconColors = [
-  'primary.main',
-  'text.primary',
-  'secondary.main',
-  'primary.main',
-  colors.tertiary,
-  'secondary.main',
-];
 
 interface SkillsProps {
   skills: Skill[];
@@ -37,66 +20,38 @@ interface SkillsProps {
 
 export function Skills({ skills }: SkillsProps) {
   return (
-    <Box component="section" id="skills" sx={{ py: { xs: 10, md: 15 } }}>
-      <Container maxWidth="lg">
-        <Reveal>
-          <SectionTitle title="Technical Arsenal" />
-        </Reveal>
+    <section id="skills" className="py-20 md:py-28 px-5 md:px-8">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          label="Technical Stack"
+          title="Skills & Tools"
+          description="Technologies I use to build fast, accessible, and maintainable front-end applications."
+        />
 
-        <Grid container spacing={4} alignItems="center">
-          <Grid size={{ xs: 12, lg: 8 }}>
-            <Grid container spacing={3}>
-              {skills.map((skill, i) => {
-                const Icon = iconMap[skill.icon];
-                return (
-                  <Grid key={skill.id} size={{ xs: 6, sm: 4, md: 4 }}>
-                    <Reveal delay={i * 0.1}>
-                      <Box
-                        sx={{
-                          p: 4,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          gap: 2,
-                          border: '1px solid #222',
-                          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                          '&:hover': {
-                            borderColor: '#444',
-                            bgcolor: '#1a1a1a',
-                            transform: 'translateY(-4px) scale(1.02)',
-                            boxShadow: `0 10px 30px -10px ${colors.primary}26`,
-                          },
-                        }}
-                      >
-                        <Icon sx={{ fontSize: 40, color: iconColors[i] }} />
-                        <Typography
-                          sx={{
-                            fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
-                            fontSize: '0.75rem',
-                            fontWeight: 600,
-                            letterSpacing: '0.1em',
-                            textTransform: 'uppercase',
-                          }}
-                        >
-                          {skill.name}
-                        </Typography>
-                      </Box>
-                    </Reveal>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </Grid>
-
-          <Grid size={{ xs: 12, lg: 4 }}>
-            <Reveal delay={0.6}>
-              <Box sx={{ position: 'relative', height: { xs: 300, lg: 400 }, minHeight: 300 }}>
-                <SkillsCrystal />
-              </Box>
-            </Reveal>
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6"
+        >
+          {skills.map((skill) => (
+            <motion.div
+              key={skill.id}
+              variants={scaleIn}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="group flex flex-col items-center justify-center gap-3 p-6 md:p-8 border border-border rounded-lg bg-surface hover:border-primary/40 hover:bg-surface-elevated transition-colors"
+            >
+              <span className="text-3xl md:text-4xl text-primary group-hover:scale-110 transition-transform">
+                {skillIcons[skill.icon] ?? '◆'}
+              </span>
+              <span className="font-mono text-[10px] md:text-xs font-semibold uppercase tracking-wider text-center text-muted group-hover:text-foreground transition-colors">
+                {skill.name}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }
