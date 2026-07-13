@@ -1,6 +1,18 @@
 import { prisma } from './prisma';
 import { fallbackPortfolio } from './fallback-data';
-import type { PortfolioData, SkillIcon } from '@/types/portfolio';
+import { projectDetails } from './project-details';
+import type { PortfolioData, Project, SkillIcon } from '@/types/portfolio';
+
+function enrichProject(project: Project): Project {
+  const details = projectDetails[project.title];
+  if (!details) return project;
+  return {
+    ...project,
+    description: details.description ?? project.description,
+    role: details.role,
+    features: details.features,
+  };
+}
 
 export async function getPortfolioData(): Promise<PortfolioData> {
   try {
@@ -13,7 +25,10 @@ export async function getPortfolioData(): Promise<PortfolioData> {
     ]);
 
     if (!profile || experiences.length === 0 || !education) {
-      return fallbackPortfolio;
+      return {
+        ...fallbackPortfolio,
+        projects: fallbackPortfolio.projects.map(enrichProject),
+      };
     }
 
     return {
@@ -23,15 +38,17 @@ export async function getPortfolioData(): Promise<PortfolioData> {
         name: s.name,
         icon: s.icon as SkillIcon,
       })),
-      projects: projects.map((p) => ({
-        id: p.id,
-        title: p.title,
-        description: p.description,
-        tags: JSON.parse(p.tags) as string[],
-        image: p.image,
-        liveUrl: p.liveUrl,
-        githubUrl: p.githubUrl,
-      })),
+      projects: projects.map((p) =>
+        enrichProject({
+          id: p.id,
+          title: p.title,
+          description: p.description,
+          tags: JSON.parse(p.tags) as string[],
+          image: p.image,
+          liveUrl: p.liveUrl,
+          githubUrl: p.githubUrl,
+        }),
+      ),
       experiences: experiences.map((e) => ({
         id: e.id,
         role: e.role,
@@ -43,6 +60,9 @@ export async function getPortfolioData(): Promise<PortfolioData> {
     };
   } catch (error) {
     console.warn('Database unavailable, using fallback portfolio data:', error);
-    return fallbackPortfolio;
+    return {
+      ...fallbackPortfolio,
+      projects: fallbackPortfolio.projects.map(enrichProject),
+    };
   }
 }

@@ -24,6 +24,11 @@ body {
   @apply bg-background text-foreground antialiased;
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 ::selection {
   @apply bg-primary/30 text-foreground;
 }

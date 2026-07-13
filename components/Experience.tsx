@@ -12,11 +12,12 @@ interface ExperienceProps {
 
 export function Experience({ experiences, education }: ExperienceProps) {
   return (
-    <section id="about" className="py-20 md:py-28 px-5 md:px-8">
+    <section id="experience" className="border-t border-border px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          label="Background"
-          title="Experience & Education"
+          label="Track record"
+          title="Experience that transfers to your project"
+          description="Enterprise delivery experience plus a strong foundation in modern frontend tooling."
         />
 
         <motion.div

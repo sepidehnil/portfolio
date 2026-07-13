@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import type { Profile, Project } from '@/types/portfolio';
 import { SectionHeading } from './SectionHeading';
-import { staggerContainer, scaleIn } from '@/lib/motion';
+import { fadeInUp, staggerContainer } from '@/lib/motion';
 
 interface ProjectsProps {
   projects: Project[];
@@ -13,19 +13,19 @@ interface ProjectsProps {
 
 export function Projects({ projects, profile }: ProjectsProps) {
   return (
-    <section id="work" className="py-20 md:py-28 px-5 md:px-8 bg-surface/50">
+    <section id="work" className="bg-surface/40 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 md:mb-16">
+        <div className="mb-12 flex flex-col gap-4 sm:mb-16 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
-            label="Portfolio"
-            title="Featured Projects"
-            description="Selected work showcasing front-end engineering, performance, and UI craft."
+            label="Selected work"
+            title="Project case studies"
+            description="Real products and storefronts — focused on usability, responsiveness, and clean frontend delivery."
           />
           <a
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex font-mono text-xs font-semibold uppercase tracking-wider text-muted hover:text-primary transition-colors shrink-0"
+            className="hidden shrink-0 text-sm font-medium text-muted transition hover:text-primary sm:inline-flex"
           >
             View GitHub →
           </a>
@@ -36,69 +36,106 @@ export function Projects({ projects, profile }: ProjectsProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="space-y-8"
         >
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <motion.article
               key={project.id}
-              variants={scaleIn}
-              whileHover={{ y: -6 }}
-              className="group flex flex-col overflow-hidden border border-border rounded-xl bg-background hover:border-primary/30 transition-colors"
+              variants={fadeInUp}
+              className="overflow-hidden rounded-2xl border border-border bg-background transition hover:border-primary/25"
             >
-              {project.image && (
-                <div className="relative h-48 md:h-56 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                </div>
-              )}
-              <div className="flex flex-col flex-1 p-6 md:p-8">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, j) => (
-                    <span
-                      key={tag}
-                      className={`font-mono text-[10px] py-1 px-2 border-l-2 bg-surface-elevated ${
-                        j === 0
-                          ? 'border-primary text-primary'
-                          : j === 1
-                            ? 'border-secondary text-secondary'
-                            : 'border-border text-muted'
-                      }`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted text-sm leading-relaxed flex-1 mb-6">{project.description}</p>
-                <div className="flex flex-wrap gap-4 pt-4 border-t border-border">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono text-xs font-semibold uppercase tracking-wider text-primary hover:underline"
-                    >
-                      Live Demo →
-                    </a>
+              <div
+                className={`grid gap-0 lg:grid-cols-2 ${
+                  index % 2 === 1 ? 'lg:[&>div:first-child]:order-2' : ''
+                }`}
+              >
+                <div className="relative min-h-[240px] bg-surface-elevated lg:min-h-full">
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={`Screenshot of ${project.title}`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      priority={index === 0}
+                    />
+                  ) : (
+                    <div className="flex h-full min-h-[240px] items-center justify-center text-sm text-muted">
+                      Project preview
+                    </div>
                   )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono text-xs font-semibold uppercase tracking-wider text-muted hover:text-foreground transition-colors"
-                    >
-                      Source Code →
-                    </a>
+                </div>
+
+                <div className="flex flex-col p-6 md:p-8 lg:p-10">
+                  <p className="mb-2 font-mono text-xs uppercase tracking-[0.14em] text-primary">
+                    Case study 0{index + 1}
+                  </p>
+                  <h3 className="mb-3 text-2xl font-bold tracking-tight text-foreground">
+                    {project.title}
+                  </h3>
+                  <p className="mb-5 text-sm leading-relaxed text-muted md:text-base">
+                    {project.description}
+                  </p>
+
+                  {project.role && (
+                    <div className="mb-5">
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-foreground">
+                        My role
+                      </p>
+                      <p className="text-sm text-muted">{project.role}</p>
+                    </div>
                   )}
+
+                  {project.features && project.features.length > 0 && (
+                    <div className="mb-5">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-foreground">
+                        Key features
+                      </p>
+                      <ul className="space-y-1.5 text-sm text-muted">
+                        {project.features.map((feature) => (
+                          <li key={feature} className="flex gap-2">
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-secondary" aria-hidden />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <div className="mb-6 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-md border border-border bg-surface px-2.5 py-1 font-mono text-[11px] text-muted"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex flex-wrap gap-3 border-t border-border pt-5">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-[#003258] transition hover:opacity-90"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center rounded-lg border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition hover:border-primary/40"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.article>

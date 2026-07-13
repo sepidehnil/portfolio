@@ -14,16 +14,69 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://portfolio-gfdg3.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Sepideh Nilforoushan | Front-End Developer',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Sepideh Nilforoushan | React & Next.js Frontend Developer',
+    template: '%s | Sepideh Nilforoushan',
+  },
   description:
-    'Front-end developer portfolio — React, Next.js, TypeScript. Building scalable and performant web applications.',
+    'Freelance frontend developer specializing in React and Next.js. I build fast, responsive websites for businesses and startups. Available for Upwork and contract work.',
+  keywords: [
+    'React developer',
+    'Next.js developer',
+    'frontend freelancer',
+    'Upwork React developer',
+    'TypeScript',
+    'Tailwind CSS',
+    'Figma to React',
+  ],
+  authors: [{ name: 'Sepideh Nilforoushan' }],
+  creator: 'Sepideh Nilforoushan',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteUrl,
+    siteName: 'Sepideh Nilforoushan Portfolio',
+    title: 'Sepideh Nilforoushan | React & Next.js Frontend Developer',
+    description:
+      'I build fast, responsive React and Next.js websites for businesses and startups. Hire a reliable frontend partner.',
+    images: [
+      {
+        url: '/velora-brand.png',
+        width: 1200,
+        height: 630,
+        alt: 'Sepideh Nilforoushan — Frontend Developer portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sepideh Nilforoushan | React & Next.js Frontend Developer',
+    description:
+      'Freelance frontend developer for businesses and startups. React, Next.js, TypeScript.',
+    images: ['/velora-brand.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-sm focus:text-[#003258]"
+        >
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

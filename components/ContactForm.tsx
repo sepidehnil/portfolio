@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import type { Profile } from '@/types/portfolio';
 import { SectionHeading } from './SectionHeading';
 import { fadeInUp } from '@/lib/motion';
@@ -44,43 +44,81 @@ export function ContactForm({ profile }: ContactFormProps) {
       setMessage('');
     } catch (err) {
       setStatus('error');
-      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong');
+      setErrorMsg(
+        err instanceof Error
+          ? err.message
+          : 'Something went wrong. Please email me directly instead.',
+      );
     }
   };
 
-  const firstName = profile.name.split(' ')[0];
   const inputClass =
-    'w-full px-4 py-3 rounded-lg bg-surface-elevated border border-border text-foreground placeholder:text-muted/60 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors';
+    'w-full rounded-lg border border-border bg-surface-elevated px-4 py-3 text-foreground placeholder:text-muted/60 transition focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20';
 
   return (
-    <section id="contact" className="py-20 md:py-28 px-5 md:px-8">
+    <section id="contact" className="px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-surface p-8 md:p-16">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+        <div className="overflow-hidden rounded-2xl border border-border bg-surface">
+          <div className="grid lg:grid-cols-2">
+            <div className="border-b border-border p-8 md:p-12 lg:border-b-0 lg:border-r">
+              <SectionHeading
+                label="Contact"
+                title="Let’s build your next frontend"
+                description="Tell me about your product, timeline, and goals. I usually reply within 24 hours."
+              />
 
-          <div className="relative max-w-xl mx-auto">
-            <SectionHeading
-              title={`Let's connect, ${firstName}.`}
-              description="Have a project in mind or want to discuss an opportunity? Send me a message."
-            />
+              <div className="space-y-4">
+                <a
+                  href={`mailto:${profile.email}?subject=Freelance%20project%20inquiry`}
+                  className="flex items-center justify-between rounded-xl border border-border bg-background px-4 py-3 text-sm transition hover:border-primary/40"
+                >
+                  <span className="text-muted">Email</span>
+                  <span className="font-medium text-foreground">{profile.email}</span>
+                </a>
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between rounded-xl border border-border bg-background px-4 py-3 text-sm transition hover:border-primary/40"
+                >
+                  <span className="text-muted">LinkedIn</span>
+                  <span className="font-medium text-foreground">View profile →</span>
+                </a>
+                <a
+                  href={profile.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between rounded-xl border border-border bg-background px-4 py-3 text-sm transition hover:border-primary/40"
+                >
+                  <span className="text-muted">GitHub</span>
+                  <span className="font-medium text-foreground">View work →</span>
+                </a>
+              </div>
 
-            <motion.form
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              onSubmit={handleSubmit}
-              className="space-y-4"
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <p className="mt-8 text-sm text-muted">
+                Open to Upwork contracts, fixed-price builds, and ongoing frontend support.
+              </p>
+            </div>
+
+            <div className="p-8 md:p-12">
+              <motion.form
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                onSubmit={handleSubmit}
+                className="space-y-4"
+                noValidate
+              >
                 <div>
-                  <label htmlFor="name" className="sr-only">
+                  <label htmlFor="name" className="mb-1.5 block text-sm text-muted">
                     Name
                   </label>
                   <input
                     id="name"
+                    name="name"
                     type="text"
+                    autoComplete="name"
                     placeholder="Your name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -89,75 +127,74 @@ export function ContactForm({ profile }: ContactFormProps) {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="sr-only">
+                  <label htmlFor="email" className="mb-1.5 block text-sm text-muted">
                     Email
                   </label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
-                    placeholder="your@email.com"
+                    autoComplete="email"
+                    placeholder="you@company.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     className={inputClass}
                   />
                 </div>
-              </div>
-              <div>
-                <label htmlFor="message" className="sr-only">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  placeholder="Tell me about your project..."
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  required
-                  rows={5}
-                  className={`${inputClass} resize-none`}
-                />
-              </div>
+                <div>
+                  <label htmlFor="message" className="mb-1.5 block text-sm text-muted">
+                    Project details
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="What are you building? Timeline and budget range help too."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
+                    rows={5}
+                    className={`${inputClass} resize-y`}
+                  />
+                </div>
 
-              <motion.button
-                type="submit"
-                disabled={status === 'loading'}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto px-10 py-4 bg-primary text-[#003258] font-mono text-xs font-semibold uppercase tracking-wider rounded-lg disabled:opacity-60 hover:shadow-lg hover:shadow-primary/20 transition-shadow"
-              >
-                {status === 'loading' ? 'Sending...' : 'Send Message'}
-              </motion.button>
-            </motion.form>
-
-            <AnimatePresence mode="wait">
-              {status === 'success' && (
-                <motion.p
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="mt-4 text-sm text-secondary"
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="inline-flex w-full items-center justify-center rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-[#003258] transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
-                  Message sent! I&apos;ll get back to you within 24 hours.
-                </motion.p>
-              )}
-              {status === 'error' && (
-                <motion.p
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="mt-4 text-sm text-red-400"
-                >
-                  {errorMsg}
-                </motion.p>
-              )}
-            </AnimatePresence>
+                  {status === 'loading' ? 'Sending…' : 'Send Message'}
+                </button>
 
-            <div className="mt-10 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted font-mono">
-              <a href={`mailto:${profile.email}`} className="hover:text-primary transition-colors">
-                {profile.email}
-              </a>
-              <span>{profile.phone}</span>
-              <span>{profile.location}</span>
+                <AnimatePresence mode="wait">
+                  {status === 'success' && (
+                    <motion.p
+                      role="status"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="text-sm text-emerald-400"
+                    >
+                      Message received. I&apos;ll get back to you soon.
+                    </motion.p>
+                  )}
+                  {status === 'error' && (
+                    <motion.p
+                      role="alert"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="text-sm text-red-400"
+                    >
+                      {errorMsg} You can also email{' '}
+                      <a className="underline" href={`mailto:${profile.email}`}>
+                        {profile.email}
+                      </a>
+                      .
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </motion.form>
             </div>
           </div>
         </div>

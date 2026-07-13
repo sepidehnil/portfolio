@@ -34,6 +34,8 @@ export interface Project {
   image: string | null;
   liveUrl: string | null;
   githubUrl: string | null;
+  role?: string;
+  features?: string[];
 }
 
 export interface Experience {
@@ -59,10 +61,61 @@ export interface PortfolioData {
 }
 
 export const navLinks = [
+  { label: 'Services', href: '#services' },
   { label: 'Work', href: '#work' },
-  { label: 'Skills', href: '#skills' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ] as const;
 
-export const HIGHLIGHT_TERMS = ['React', 'Next.js', 'Redux', 'TypeScript'] as const;
+export const HIGHLIGHT_TERMS = ['React', 'Next.js', 'TypeScript', 'Tailwind'] as const;
+
+export const services = [
+  {
+    title: 'React.js Development',
+    description:
+      'Build interactive, component-driven interfaces with clean architecture and reusable UI patterns.',
+  },
+  {
+    title: 'Next.js Websites',
+    description:
+      'Ship fast, SEO-friendly web apps with server rendering, routing, and production-ready performance.',
+  },
+  {
+    title: 'Figma to React Conversion',
+    description:
+      'Turn design files into pixel-accurate, responsive React components that match your brand.',
+  },
+  {
+    title: 'Responsive Website Development',
+    description:
+      'Deliver layouts that look sharp and work smoothly across mobile, tablet, and desktop.',
+  },
+  {
+    title: 'Frontend Bug Fixing & Optimization',
+    description:
+      'Diagnose UI issues, improve Core Web Vitals, and leave you with maintainable, faster code.',
+  },
+] as const;
+
+export const whyWorkWithMe = [
+  {
+    title: 'Clean, maintainable code',
+    description: 'Readable structure, clear components, and patterns that are easy to extend later.',
+  },
+  {
+    title: 'Responsive by default',
+    description: 'Interfaces designed to work well on phones first, then scale up to larger screens.',
+  },
+  {
+    title: 'Performance-minded',
+    description: 'Code splitting, image optimization, and lean UI so pages feel fast for real users.',
+  },
+  {
+    title: 'Clear communication',
+    description: 'Updates you can follow — scope, timelines, and trade-offs explained without jargon.',
+  },
+  {
+    title: 'Reliable delivery',
+    description: 'Focused execution on agreed milestones so you can plan launches with confidence.',
+  },
+] as const;

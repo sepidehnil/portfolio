@@ -12,23 +12,32 @@ export function Footer({ profile }: FooterProps) {
   ];
 
   return (
-    <footer className="border-t border-border bg-surface py-8 px-5 md:px-8">
-      <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="font-mono text-xs uppercase tracking-wider text-muted">
-          © {new Date().getFullYear()} {profile.name}
-        </p>
-        <div className="flex gap-6">
+    <footer className="border-t border-border bg-surface px-5 py-10 md:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
+        <div className="text-center md:text-left">
+          <p className="text-sm font-semibold text-foreground">{profile.name}</p>
+          <p className="mt-1 text-sm text-muted">
+            React & Next.js frontend developer · Available for freelance work
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-5">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
               target={link.href.startsWith('http') ? '_blank' : undefined}
               rel="noopener noreferrer"
-              className="font-mono text-sm text-muted hover:text-secondary transition-colors"
+              className="text-sm text-muted transition hover:text-primary"
             >
               {link.label}
             </a>
           ))}
+          <a
+            href="#contact"
+            className="rounded-lg bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-[#003258]"
+          >
+            Hire Me
+          </a>
         </div>
       </div>
     </footer>
