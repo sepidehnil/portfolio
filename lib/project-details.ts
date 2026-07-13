@@ -1,36 +1,42 @@
-/** Case-study details merged onto projects by title (works with DB or fallback). */
+/** Case-study details merged onto projects by title. */
 export const projectDetails: Record<
   string,
   { role: string; features: string[]; description?: string }
 > = {
   'Velora — Premium Footwear': {
-    role: 'Designed and developed the frontend storefront with React and Tailwind CSS.',
+    role:
+      'Owned the frontend storefront: layout system, product presentation, and conversion-focused UI with React and Tailwind CSS.',
     description:
-      'Built a responsive e-commerce storefront for a premium footwear brand — product browsing, category filters, and a polished shopping experience aimed at conversion.',
+      'Built a responsive e-commerce storefront for a premium footwear brand — product discovery, category browsing, and a polished shopping experience designed to convert visitors into buyers.',
     features: [
-      'Featured product collections and category browsing',
-      'Responsive product cards and shop layouts',
-      'Modern SaaS-style UI with clear CTAs',
+      'Featured collections and category-based browsing',
+      'Responsive product cards optimized for mobile shopping',
+      'Clear CTAs and modern SaaS-style visual hierarchy',
+      'Reusable UI components for faster iteration',
     ],
   },
   'Weather Forecast': {
-    role: 'Developed the full frontend experience, including auth flow and API-driven UI.',
+    role:
+      'Developed the full frontend experience, including search flows, API-driven UI states, and an authentication-ready login path.',
     description:
-      'Created a weather search app that helps users get real-time conditions by location, with a clean interface and smooth interactions for everyday use.',
+      'Built a responsive weather platform that helps users find real-time conditions by location — with clean UX, smooth interactions, and reliable REST API integration.',
     features: [
-      'Country/city weather search via REST APIs',
-      'Responsive UI with animations',
+      'Location-based weather search via REST APIs',
+      'Mobile-first responsive interface',
+      'Loading and empty states for better UX',
       'Authentication-ready login flow',
     ],
   },
   'Luxury Home Online Shop': {
-    role: 'Built client-facing and admin-facing frontend features for a full e-commerce platform.',
+    role:
+      'Built client-facing shopping flows and admin-oriented management views for a full e-commerce platform.',
     description:
-      'Developed a furniture e-commerce platform so customers can shop smoothly while admins manage products, orders, and accounts efficiently.',
+      'Developed a furniture e-commerce platform so customers can browse and purchase with confidence while administrators manage products, orders, and accounts efficiently.',
     features: [
-      'Product catalog and shopping flows',
-      'Admin-oriented management views',
+      'Product catalog and shopping experience',
+      'Admin-oriented product and order management views',
       'REST API integration with React Query',
+      'Reusable React components with Tailwind and MUI',
     ],
   },
 };

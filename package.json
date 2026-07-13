@@ -4,21 +4,15 @@
   "version": "2.0.0",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "db:push": "prisma db push",
-    "db:seed": "prisma db seed",
-    "db:studio": "prisma studio",
-    "postinstall": "prisma generate"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^6.3.0",
     "framer-motion": "^12.42.2",
     "next": "^15.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "zod": "^3.24.1"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.2",
@@ -26,13 +20,8 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "postcss": "^8.5.16",
-    "prisma": "^6.3.0",
     "tailwindcss": "^4.3.2",
-    "tsx": "^4.19.0",
     "typescript": "^5.7.0"
-  },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
   },
   "volta": {
     "node": "20.20.2"

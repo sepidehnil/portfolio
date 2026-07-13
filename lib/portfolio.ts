@@ -1,7 +1,6 @@
-import { prisma } from './prisma';
-import { fallbackPortfolio } from './fallback-data';
+import { portfolioData } from './portfolio-data';
 import { projectDetails } from './project-details';
-import type { PortfolioData, Project, SkillIcon } from '@/types/portfolio';
+import type { PortfolioData, Project } from '@/types/portfolio';
 
 function enrichProject(project: Project): Project {
   const details = projectDetails[project.title];
@@ -14,55 +13,10 @@ function enrichProject(project: Project): Project {
   };
 }
 
-export async function getPortfolioData(): Promise<PortfolioData> {
-  try {
-    const [profile, skills, projects, experiences, education] = await Promise.all([
-      prisma.profile.findFirst(),
-      prisma.skill.findMany({ orderBy: { order: 'asc' } }),
-      prisma.project.findMany({ orderBy: { order: 'asc' } }),
-      prisma.experience.findMany({ orderBy: { order: 'asc' } }),
-      prisma.education.findFirst(),
-    ]);
-
-    if (!profile || experiences.length === 0 || !education) {
-      return {
-        ...fallbackPortfolio,
-        projects: fallbackPortfolio.projects.map(enrichProject),
-      };
-    }
-
-    return {
-      profile,
-      skills: skills.map((s) => ({
-        id: s.id,
-        name: s.name,
-        icon: s.icon as SkillIcon,
-      })),
-      projects: projects.map((p) =>
-        enrichProject({
-          id: p.id,
-          title: p.title,
-          description: p.description,
-          tags: JSON.parse(p.tags) as string[],
-          image: p.image,
-          liveUrl: p.liveUrl,
-          githubUrl: p.githubUrl,
-        }),
-      ),
-      experiences: experiences.map((e) => ({
-        id: e.id,
-        role: e.role,
-        company: e.company,
-        period: e.period,
-        highlights: JSON.parse(e.highlights) as string[],
-      })),
-      education,
-    };
-  } catch (error) {
-    console.warn('Database unavailable, using fallback portfolio data:', error);
-    return {
-      ...fallbackPortfolio,
-      projects: fallbackPortfolio.projects.map(enrichProject),
-    };
-  }
+/** Portfolio content is static — edit `lib/portfolio-data.ts` to update. */
+export function getPortfolioData(): PortfolioData {
+  return {
+    ...portfolioData,
+    projects: portfolioData.projects.map(enrichProject),
+  };
 }

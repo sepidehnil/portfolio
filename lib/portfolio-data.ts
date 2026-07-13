@@ -1,7 +1,7 @@
 import type { PortfolioData } from '@/types/portfolio';
 
-/** Used when the database is unavailable (e.g. Vercel without Postgres). */
-export const fallbackPortfolio: PortfolioData = {
+/** Edit this file to update site content. */
+export const portfolioData: PortfolioData = {
   profile: {
     name: 'Sepideh Nilforoushan',
     title: 'Front-End Developer · React & Next.js',
@@ -11,16 +11,17 @@ export const fallbackPortfolio: PortfolioData = {
     tagline: 'Available for freelance projects',
     heroHeading: 'I build fast, responsive React and Next.js websites for businesses and startups.',
     heroHighlight: 'React and Next.js',
-    bio: 'I help founders and businesses turn ideas into clean, production-ready frontends — with React, Next.js, and TypeScript. My focus is usable interfaces, solid performance, and code that is easy to maintain after launch.',
+    bio: 'I help startups and businesses transform ideas into responsive, scalable, and high-performance web experiences — with clean React and Next.js architecture that teams can maintain after launch.',
     github: 'https://github.com/sepidehnil',
     linkedin: 'https://linkedin.com/in/sepideh-nilforoushan',
+    resumeUrl: undefined,
   },
   skills: [
     { id: 1, name: 'React & Redux', icon: 'polymer' },
     { id: 2, name: 'Next.js & TypeScript', icon: 'terminal' },
     { id: 3, name: 'Zustand & TanStack Query', icon: 'code' },
     { id: 4, name: 'Material-UI & Tailwind', icon: 'palette' },
-    { id: 5, name: 'Docker & REST APIs', icon: 'api' },
+    { id: 5, name: 'REST APIs', icon: 'api' },
     { id: 6, name: 'HTML, CSS & SCSS', icon: 'settings_input_component' },
   ],
   projects: [

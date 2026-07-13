@@ -6,6 +6,8 @@ import { Hero } from './Hero';
 import { Services } from './Services';
 import { Projects } from './Projects';
 import { WhyWorkWithMe } from './WhyWorkWithMe';
+import { Process } from './Process';
+import { TechStack } from './TechStack';
 import { About } from './About';
 import { Experience } from './Experience';
 import { ContactForm } from './ContactForm';
@@ -24,7 +26,9 @@ export function HomePage({ data }: HomePageProps) {
         <Services />
         <Projects projects={data.projects} profile={data.profile} />
         <WhyWorkWithMe />
-        <About profile={data.profile} skills={data.skills} />
+        <Process />
+        <TechStack />
+        <About profile={data.profile} />
         <Experience experiences={data.experiences} education={data.education} />
         <ContactForm profile={data.profile} />
       </main>

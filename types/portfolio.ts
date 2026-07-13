@@ -18,6 +18,7 @@ export interface Profile {
   bio: string;
   github: string;
   linkedin: string;
+  resumeUrl?: string;
 }
 
 export interface Skill {
@@ -63,59 +64,114 @@ export interface PortfolioData {
 export const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Work', href: '#work' },
+  { label: 'Process', href: '#process' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ] as const;
 
-export const HIGHLIGHT_TERMS = ['React', 'Next.js', 'TypeScript', 'Tailwind'] as const;
+export const heroTrustPoints = [
+  'Responsive Design',
+  'Clean Code',
+  'Performance Focused',
+  'Modern UI Development',
+] as const;
 
 export const services = [
   {
-    title: 'React.js Development',
+    title: 'React Development',
     description:
-      'Build interactive, component-driven interfaces with clean architecture and reusable UI patterns.',
+      'Building modern React applications with reusable and scalable components.',
+    icon: 'react',
   },
   {
-    title: 'Next.js Websites',
+    title: 'Next.js Development',
     description:
-      'Ship fast, SEO-friendly web apps with server rendering, routing, and production-ready performance.',
+      'Creating high-performance websites with server-side rendering and optimized SEO.',
+    icon: 'next',
   },
   {
-    title: 'Figma to React Conversion',
+    title: 'Frontend Development',
     description:
-      'Turn design files into pixel-accurate, responsive React components that match your brand.',
+      'Responsive websites using modern HTML, CSS, JavaScript and TypeScript.',
+    icon: 'frontend',
   },
   {
-    title: 'Responsive Website Development',
+    title: 'Figma to Code',
     description:
-      'Deliver layouts that look sharp and work smoothly across mobile, tablet, and desktop.',
+      'Converting Figma designs into pixel-perfect responsive websites.',
+    icon: 'figma',
   },
   {
-    title: 'Frontend Bug Fixing & Optimization',
+    title: 'UI Improvements',
     description:
-      'Diagnose UI issues, improve Core Web Vitals, and leave you with maintainable, faster code.',
+      'Improving existing interfaces with better usability, responsiveness and performance.',
+    icon: 'ui',
   },
 ] as const;
 
-export const whyWorkWithMe = [
+export const whyClientsChooseMe = [
   {
-    title: 'Clean, maintainable code',
-    description: 'Readable structure, clear components, and patterns that are easy to extend later.',
+    title: 'Clean & Maintainable Code',
+    description: 'Readable architecture and reusable components that are easy to extend after launch.',
+    icon: 'code',
   },
   {
-    title: 'Responsive by default',
-    description: 'Interfaces designed to work well on phones first, then scale up to larger screens.',
+    title: 'Responsive Design',
+    description: 'Layouts that feel intentional on mobile, tablet, and desktop — not just scaled down.',
+    icon: 'responsive',
   },
   {
-    title: 'Performance-minded',
-    description: 'Code splitting, image optimization, and lean UI so pages feel fast for real users.',
+    title: 'Performance Optimization',
+    description: 'Faster loads through lean UI, smart rendering, and image optimization practices.',
+    icon: 'performance',
   },
   {
-    title: 'Clear communication',
-    description: 'Updates you can follow — scope, timelines, and trade-offs explained without jargon.',
+    title: 'Pixel Perfect Development',
+    description: 'Careful implementation of design details so the product matches what you approved.',
+    icon: 'pixel',
   },
   {
-    title: 'Reliable delivery',
-    description: 'Focused execution on agreed milestones so you can plan launches with confidence.',
+    title: 'Strong Communication',
+    description: 'Clear updates on scope, progress, and decisions — so you always know where things stand.',
+    icon: 'comms',
+  },
+  {
+    title: 'Reliable Delivery',
+    description: 'Focused execution against milestones so you can plan launches with confidence.',
+    icon: 'delivery',
+  },
+] as const;
+
+export const processSteps = [
+  {
+    step: '01',
+    title: 'Understanding Your Requirements',
+    description: 'Clarify goals, users, constraints, and success criteria before writing code.',
+  },
+  {
+    step: '02',
+    title: 'Planning the Architecture',
+    description: 'Map components, data flow, and structure so the build stays scalable and maintainable.',
+  },
+  {
+    step: '03',
+    title: 'Development',
+    description: 'Implement responsive UI, integrate APIs, and iterate with visible progress.',
+  },
+  {
+    step: '04',
+    title: 'Testing & Delivery',
+    description: 'Polish interactions, verify responsiveness, and hand off a production-ready frontend.',
+  },
+] as const;
+
+export const techStack = [
+  {
+    category: 'Frontend',
+    items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS'],
+  },
+  {
+    category: 'Tools',
+    items: ['Git', 'GitHub', 'Vercel', 'Figma'],
   },
 ] as const;
