@@ -21,7 +21,7 @@ export function WhyWorkWithMe() {
         <SectionHeading
           label="Why clients choose me"
           title="A frontend partner you can trust"
-          description="Every engagement is built around quality, clarity, and delivery — not just demos."
+          description="Quality, clarity, and delivery — so your product looks sharp and ships on schedule."
         />
 
         <motion.div

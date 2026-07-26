@@ -48,8 +48,7 @@ export function Hero({ profile }: HeroProps) {
           transition={{ delay: 0.15 }}
           className="mb-10 max-w-2xl text-base leading-relaxed text-muted md:text-xl"
         >
-          I help startups and businesses transform ideas into responsive, scalable, and
-          high-performance web experiences.
+          {profile.bio}
         </motion.p>
 
         <motion.div

@@ -35,6 +35,8 @@ export interface Project {
   image: string | null;
   liveUrl: string | null;
   githubUrl: string | null;
+  /** Accent hex used for case-study chrome (e.g. #A8C686). */
+  accentColor: string;
   role?: string;
   features?: string[];
 }
@@ -80,31 +82,31 @@ export const services = [
   {
     title: 'React Development',
     description:
-      'Building modern React applications with reusable and scalable components.',
+      'Modern React apps with reusable components, clear structure, and UI that scales as your product grows.',
     icon: 'react',
   },
   {
     title: 'Next.js Development',
     description:
-      'Creating high-performance websites with server-side rendering and optimized SEO.',
+      'Fast Next.js websites with strong performance, SEO-friendly rendering, and production-ready structure.',
     icon: 'next',
   },
   {
     title: 'Frontend Development',
     description:
-      'Responsive websites using modern HTML, CSS, JavaScript and TypeScript.',
+      'Responsive interfaces built with HTML, CSS, JavaScript, and TypeScript — polished across every screen size.',
     icon: 'frontend',
   },
   {
     title: 'Figma to Code',
     description:
-      'Converting Figma designs into pixel-perfect responsive websites.',
+      'Pixel-accurate implementation of your Figma designs into clean, responsive React and Next.js UI.',
     icon: 'figma',
   },
   {
     title: 'UI Improvements',
     description:
-      'Improving existing interfaces with better usability, responsiveness and performance.',
+      'Refresh existing interfaces for better usability, responsiveness, and faster, more consistent user flows.',
     icon: 'ui',
   },
 ] as const;
@@ -112,22 +114,22 @@ export const services = [
 export const whyClientsChooseMe = [
   {
     title: 'Clean & Maintainable Code',
-    description: 'Readable architecture and reusable components that are easy to extend after launch.',
+    description: 'Readable architecture and reusable components your team can extend after launch.',
     icon: 'code',
   },
   {
     title: 'Responsive Design',
-    description: 'Layouts that feel intentional on mobile, tablet, and desktop — not just scaled down.',
+    description: 'Layouts that feel intentional on mobile, tablet, and desktop — not just squeezed down.',
     icon: 'responsive',
   },
   {
     title: 'Performance Optimization',
-    description: 'Faster loads through lean UI, smart rendering, and image optimization practices.',
+    description: 'Faster pages through lean UI, smart rendering, and thoughtful image handling.',
     icon: 'performance',
   },
   {
     title: 'Pixel Perfect Development',
-    description: 'Careful implementation of design details so the product matches what you approved.',
+    description: 'Careful attention to spacing, typography, and details so the build matches the design.',
     icon: 'pixel',
   },
   {
@@ -146,22 +148,22 @@ export const processSteps = [
   {
     step: '01',
     title: 'Understanding Your Requirements',
-    description: 'Clarify goals, users, constraints, and success criteria before writing code.',
+    description: 'Clarify goals, users, and success criteria before writing a single line of code.',
   },
   {
     step: '02',
     title: 'Planning the Architecture',
-    description: 'Map components, data flow, and structure so the build stays scalable and maintainable.',
+    description: 'Map components and structure so the frontend stays scalable and easy to maintain.',
   },
   {
     step: '03',
     title: 'Development',
-    description: 'Implement responsive UI, integrate APIs, and iterate with visible progress.',
+    description: 'Build responsive UI, connect APIs when needed, and share progress as we go.',
   },
   {
     step: '04',
     title: 'Testing & Delivery',
-    description: 'Polish interactions, verify responsiveness, and hand off a production-ready frontend.',
+    description: 'Polish interactions, check responsiveness, and hand off a production-ready frontend.',
   },
 ] as const;
 

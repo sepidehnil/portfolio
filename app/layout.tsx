@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: '%s | Sepideh Nilforoushan',
   },
   description:
-    'I build fast, modern web applications with React and Next.js for startups and businesses. Hire a freelance frontend developer for responsive UI, clean architecture, and reliable delivery.',
+    'React & Next.js frontend developer with banking and enterprise UI experience. Fast, responsive interfaces that ship on deadline.',
   keywords: [
     'hire React developer',
     'Next.js freelancer',
@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     siteName: 'Sepideh Nilforoushan Portfolio',
     title: 'Sepideh Nilforoushan | React & Next.js Frontend Developer',
     description:
-      'I build fast, responsive React and Next.js websites for businesses and startups. Hire a reliable frontend partner.',
+      'Frontend developer with banking and enterprise UI experience. React, Next.js, and reliable delivery on deadline.',
     images: [
       {
-        url: '/velora-brand.png',
+        url: '/ventura-camping.webp',
         width: 1200,
         height: 630,
         alt: 'Sepideh Nilforoushan — Frontend Developer portfolio',
@@ -55,8 +55,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sepideh Nilforoushan | React & Next.js Frontend Developer',
     description:
-      'Freelance frontend developer for businesses and startups. React, Next.js, TypeScript.',
-    images: ['/velora-brand.png'],
+      'React & Next.js frontend developer — banking UI experience, responsive interfaces, delivery on deadline.',
+    images: ['/ventura-camping.webp'],
   },
   robots: {
     index: true,

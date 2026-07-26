@@ -20,7 +20,7 @@ export function Services() {
         <SectionHeading
           label="Services"
           title="What I can build for you"
-          description="Practical frontend services for founders and teams who need a reliable React and Next.js partner."
+          description="Frontend services for founders and teams who need a reliable React and Next.js partner."
         />
 
         <motion.div

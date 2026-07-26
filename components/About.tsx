@@ -15,8 +15,8 @@ export function About({ profile }: AboutProps) {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="About"
-          title="I build interfaces that support real business goals"
-          description="Frontend work that balances user experience, performance, and maintainable architecture."
+          title="Enterprise-ready frontend, delivered on time"
+          description="Banking and large-scale UI experience with React and Next.js — polished interfaces that ship when promised."
         />
 
         <motion.div
@@ -30,19 +30,19 @@ export function About({ profile }: AboutProps) {
             <p>
               I&apos;m {profile.name}, a frontend developer specializing in{' '}
               <strong className="font-semibold text-foreground">React</strong> and{' '}
-              <strong className="font-semibold text-foreground">Next.js</strong>. I partner with
-              startups and businesses to turn product requirements into responsive, scalable web
-              experiences that feel polished and stay maintainable after launch.
+              <strong className="font-semibold text-foreground">Next.js</strong>. I work on
+              interfaces that need to perform at scale — from product sites to enterprise platforms
+              where clarity, speed, and reliability matter.
             </p>
             <p>
-              My approach is practical: understand the problem, plan a clean component architecture,
-              and ship interfaces that load quickly, work across devices, and respect accessibility
-              basics. Whether it&apos;s a marketing site, dashboard, or e-commerce UI, I focus on
-              clarity for users and reliability for your team.
+              Through my work at Adanic, I&apos;ve built and improved UI for banking and insurance
+              platforms serving millions of users. That environment taught me to write careful,
+              maintainable frontend code and to deliver on deadline without sacrificing quality.
             </p>
             <p>
-              At Adanic, I&apos;ve contributed to enterprise banking and insurance platforms used by
-              millions of people — where performance, correctness, and careful delivery matter.
+              Whether you need a marketing site, dashboard, or e-commerce experience, I bring the
+              same standards: clean architecture, responsive design, and communication you can count
+              on from kickoff to launch.
             </p>
           </div>
 
@@ -52,12 +52,12 @@ export function About({ profile }: AboutProps) {
             </h3>
             <ul className="space-y-3 text-sm text-muted">
               {[
-                'Solving business problems with clear UI',
-                'Building scalable component systems',
-                'Clean architecture and maintainable code',
-                'Performance optimization',
-                'User experience and responsive design',
-                'Accessible, semantic frontend markup',
+                'Enterprise and banking UI at scale',
+                'Reliable delivery on deadline',
+                'Scalable React component systems',
+                'Maintainable, production-ready code',
+                'Performance and responsive design',
+                'Figma-to-code implementation',
               ].map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" aria-hidden />

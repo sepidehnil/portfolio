@@ -3,23 +3,24 @@ export const projectDetails: Record<
   string,
   { role: string; features: string[]; description?: string }
 > = {
-  'Velora — Premium Footwear': {
+  'Ventura — Camping & Outdoor Gear': {
     role:
-      'Owned the frontend storefront: layout system, product presentation, and conversion-focused UI with React and Tailwind CSS.',
+      'Led the frontend build end to end — layout system, product discovery UI, featured deals, and motion details — using Next.js, React, TypeScript, and Tailwind CSS, with Zustand for client state and Prisma for product data.',
     description:
-      'Built a responsive e-commerce storefront for a premium footwear brand — product discovery, category browsing, and a polished shopping experience designed to convert visitors into buyers.',
+      'Ventura is a modern camping and outdoor gear storefront built for trail-ready shopping. Visitors can explore curated products by category, browse featured picks and timed deals, and enjoy a clean, responsive experience that feels premium from first scroll to checkout intent.',
     features: [
-      'Featured collections and category-based browsing',
-      'Responsive product cards optimized for mobile shopping',
-      'Clear CTAs and modern SaaS-style visual hierarchy',
-      'Reusable UI components for faster iteration',
+      'Category browsing for backpacks, tents, lighting, drinkware, and more',
+      'Featured product highlights with limited-time deal countdowns',
+      'Brand storytelling sections that reinforce outdoor trust',
+      'Responsive UI with Framer Motion for smooth, intentional motion',
+      'Client state with Zustand and product data with Prisma',
     ],
   },
   'Weather Forecast': {
     role:
-      'Developed the full frontend experience, including search flows, API-driven UI states, and an authentication-ready login path.',
+      'Built the full frontend experience — search flows, API-driven UI states, and an authentication-ready login path.',
     description:
-      'Built a responsive weather platform that helps users find real-time conditions by location — with clean UX, smooth interactions, and reliable REST API integration.',
+      'A clean weather app that helps users check live conditions by location, with a simple interface, clear feedback states, and smooth everyday interactions.',
     features: [
       'Location-based weather search via REST APIs',
       'Mobile-first responsive interface',
@@ -29,9 +30,9 @@ export const projectDetails: Record<
   },
   'Luxury Home Online Shop': {
     role:
-      'Built client-facing shopping flows and admin-oriented management views for a full e-commerce platform.',
+      'Built client-facing shopping flows and admin-oriented management views for a furniture e-commerce experience.',
     description:
-      'Developed a furniture e-commerce platform so customers can browse and purchase with confidence while administrators manage products, orders, and accounts efficiently.',
+      'A furniture e-commerce experience built for smooth shopping on the client side, with clear product flows and admin-friendly views for managing catalog and orders.',
     features: [
       'Product catalog and shopping experience',
       'Admin-oriented product and order management views',

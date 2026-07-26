@@ -8,10 +8,10 @@ export const portfolioData: PortfolioData = {
     email: '3pd.nilforoushan@gmail.com',
     phone: '+1 (647) 655-3294',
     location: 'Canada',
-    tagline: 'Available for freelance projects',
-    heroHeading: 'I build fast, responsive React and Next.js websites for businesses and startups.',
+    tagline: 'Open for freelance projects',
+    heroHeading: 'I build fast, conversion-ready websites with React and Next.js.',
     heroHighlight: 'React and Next.js',
-    bio: 'I help startups and businesses transform ideas into responsive, scalable, and high-performance web experiences — with clean React and Next.js architecture that teams can maintain after launch.',
+    bio: 'I build responsive React and Next.js interfaces for products at scale — including banking and enterprise UI used by millions of users. Clear communication, polished delivery, and work that ships on deadline.',
     github: 'https://github.com/sepidehnil',
     linkedin: 'https://linkedin.com/in/sepideh-nilforoushan',
     resumeUrl: undefined,
@@ -27,35 +27,38 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: 1,
-      title: 'Velora — Premium Footwear',
+      title: 'Ventura — Camping & Outdoor Gear',
       description:
-        'Built a responsive e-commerce storefront for a premium footwear brand — product browsing, category filters, and a polished shopping experience aimed at conversion.',
-      tags: ['React', 'Tailwind CSS', 'E-commerce'],
-      image: '/velora-brand.png',
-      liveUrl: 'https://shoea-eight.vercel.app/',
-      githubUrl: null,
+        'Designed and built a polished outdoor e-commerce storefront where shoppers can browse curated camping gear, explore categories, and move through a smooth, conversion-focused buying experience.',
+      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Prisma', 'Zustand', 'Framer Motion'],
+      image: '/ventura-camping.webp',
+      liveUrl: 'https://ventura-camping.vercel.app/',
+      githubUrl: 'https://github.com/sepidehnil/Ventura',
+      accentColor: '#A8C686',
     },
     {
       id: 2,
       title: 'Weather Forecast',
       description:
-        'Created a weather search app that helps users get real-time conditions by location, with a clean interface and smooth interactions for everyday use.',
+        'A clean weather app that lets users check live conditions by location — with a simple interface, clear feedback states, and smooth everyday interactions.',
       tags: ['JavaScript', 'Tailwind CSS', 'REST API'],
       image:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuBdZqZfsDiy3-wrnuvYGJz4G_ODl_YjUMMmXerKzWYlpRjI_dxnFvx5xZdy22aQve6L6YCz5Janjoz0EXpLvJc0YzoMQ-4uRMpmO_7_QD26oRFgg4YugTjfj6ewRpiDBiZtLwUMeYeWzkGGcZo_6ooajo6NEMu79vcwiI7LojCqRgcURXVVXSCunmJ190VxdUHlnSvMra1e82ck7ATok0MGlB6UkyCvus4czZrVWYXWfhlp229qHSipKp9Qsf0PEeK3XXc7BkBHn3Q',
       liveUrl: 'https://weather-forecast-jw9qduwtc-gfdg3.vercel.app/',
       githubUrl: null,
+      accentColor: '#5CD5F6',
     },
     {
       id: 3,
       title: 'Luxury Home Online Shop',
       description:
-        'Developed a furniture e-commerce platform so customers can shop smoothly while admins manage products, orders, and accounts efficiently.',
+        'A furniture e-commerce experience built for smooth shopping on the client side, with clear product flows and admin-friendly views for managing catalog and orders.',
       tags: ['React', 'Tailwind CSS', 'MUI', 'React Query'],
       image:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuAW5GPniI73A-my2z1x2g0Eio9YFcgigsbcwOiIq-oIMCgxAx6b6iN5BOsg-wifVsJ8TnwD4w5C92dcvb9fNjqqMWfhokcu_wSYxQAaUNr23DJU6P5qu0PPd8-kx-nvboG-mTMo4n9nIqfOl-dwUiwtTeiNUYo2UeknRIx1dnsZzc8M4eSr_fFu1yoJEUw0WNFJGqVdF8GNK-_WIHiJR08EnyQIxc3b-3VrjNNeWJf_zNKESOSybTUcr2RQyFpd3x0Vje-tSlxVz1g',
       liveUrl: null,
       githubUrl: 'https://github.com/sepidehnil/Luxury-Home-Online-Shop',
+      accentColor: '#E8C47A',
     },
   ],
   experiences: [
