@@ -27,7 +27,7 @@ export function Hero({ profile }: HeroProps) {
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/80 px-3.5 py-1.5 font-mono text-xs text-muted"
         >
           <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" aria-hidden />
-          {profile.tagline} · Based in {profile.location}
+          {profile.title} · {profile.location}
         </motion.p>
 
         <motion.h1
@@ -37,9 +37,10 @@ export function Hero({ profile }: HeroProps) {
           transition={{ delay: 0.05 }}
           className="mb-6 max-w-4xl text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl"
         >
-          I build fast, modern web applications with{' '}
-          <span className="text-primary">React</span> &{' '}
-          <span className="text-primary">Next.js</span>.
+          I build scalable web apps with{' '}
+          <span className="text-primary">React</span>,{' '}
+          <span className="text-primary">Next.js</span> &{' '}
+          <span className="text-primary">TypeScript</span>.
         </motion.h1>
 
         <motion.p

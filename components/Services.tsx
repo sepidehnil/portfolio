@@ -9,6 +9,9 @@ const icons: Record<string, string> = {
   react: '⚛',
   next: '▲',
   frontend: '</>',
+  fullstack: '{ }',
+  database: '▣',
+  auth: '◉',
   figma: '◇',
   ui: '◈',
 };
@@ -20,7 +23,7 @@ export function Services() {
         <SectionHeading
           label="Services"
           title="What I can build for you"
-          description="Frontend services for founders and teams who need a reliable React and Next.js partner."
+          description="React and Next.js for founders and teams — responsive UI, REST APIs, and production-ready delivery."
         />
 
         <motion.div

@@ -17,7 +17,7 @@ export function Footer({ profile }: FooterProps) {
         <div className="text-center md:text-left">
           <p className="text-sm font-semibold text-foreground">{profile.name}</p>
           <p className="mt-1 text-sm text-muted">
-            React & Next.js frontend developer · Open for freelance work
+            {profile.title}
           </p>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-5">

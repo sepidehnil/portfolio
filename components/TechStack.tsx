@@ -11,8 +11,8 @@ export function TechStack() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="Tech stack"
-          title="Tools I use to ship production frontends"
-          description="Frontend-focused tools I use to design, build, and ship polished web interfaces."
+          title="Tools I use to ship production apps"
+          description="React, Next.js, TypeScript, and REST APIs — the same stack on my resume, including Prisma, PostgreSQL, and Auth.js on FlowBoard."
         />
 
         <motion.div
@@ -20,7 +20,7 @@ export function TechStack() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid gap-4 sm:grid-cols-2"
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
           {techStack.map((group) => (
             <motion.div

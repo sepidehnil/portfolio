@@ -29,6 +29,13 @@ export function ContactForm({ profile }: ContactFormProps) {
               <span className="font-medium text-foreground">{profile.email}</span>
             </a>
             <a
+              href={`tel:${profile.phone.replace(/[^\d+]/g, '')}`}
+              className="flex items-center justify-between rounded-xl border border-border bg-background px-4 py-3.5 text-sm transition hover:border-primary/40"
+            >
+              <span className="text-muted">Phone</span>
+              <span className="font-medium text-foreground">{profile.phone}</span>
+            </a>
+            <a
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"

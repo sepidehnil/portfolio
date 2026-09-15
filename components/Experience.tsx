@@ -17,7 +17,7 @@ export function Experience({ experiences, education }: ExperienceProps) {
         <SectionHeading
           label="Track record"
           title="Experience that transfers to your project"
-          description="Enterprise delivery experience plus a strong foundation in modern frontend tooling."
+          description="Web development at Adanic and RayDana — React, Next.js, TypeScript, REST APIs, plus FlowBoard with Prisma, PostgreSQL, and Auth.js."
         />
 
         <motion.div

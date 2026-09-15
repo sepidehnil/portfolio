@@ -10,6 +10,7 @@ const icons: Record<string, string> = {
   responsive: '▣',
   performance: '⚡',
   pixel: '◎',
+  auth: '◈',
   comms: '◉',
   delivery: '✓',
 };
@@ -20,8 +21,8 @@ export function WhyWorkWithMe() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="Why clients choose me"
-          title="A frontend partner you can trust"
-          description="Quality, clarity, and delivery — so your product looks sharp and ships on schedule."
+          title="A web developer you can trust"
+          description="Quality, performance, and delivery — so your product looks sharp and ships on schedule."
         />
 
         <motion.div

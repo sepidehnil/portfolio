@@ -19,18 +19,19 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://portfolio-gfdg3.ver
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Sepideh Nilforoushan | React & Next.js Frontend Developer',
+    default: 'Sepideh Nilforoushan | Web Developer — React, Next.js & TypeScript',
     template: '%s | Sepideh Nilforoushan',
   },
   description:
-    'React & Next.js frontend developer with banking and enterprise UI experience. Fast, responsive interfaces that ship on deadline.',
+    'Web developer with 3 years of experience developing scalable web applications with React, Next.js, Redux, and TypeScript. Strong background in responsive UI and RESTful API integration.',
   keywords: [
     'hire React developer',
-    'Next.js freelancer',
-    'Upwork frontend developer',
-    'Figma to React',
+    'Next.js developer',
     'TypeScript developer',
-    'responsive web development',
+    'Prisma PostgreSQL',
+    'Auth.js',
+    'REST APIs',
+    'Web developer',
   ],
   authors: [{ name: 'Sepideh Nilforoushan' }],
   creator: 'Sepideh Nilforoushan',
@@ -39,23 +40,23 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Sepideh Nilforoushan Portfolio',
-    title: 'Sepideh Nilforoushan | React & Next.js Frontend Developer',
+    title: 'Sepideh Nilforoushan | Web Developer — React, Next.js & TypeScript',
     description:
-      'Frontend developer with banking and enterprise UI experience. React, Next.js, and reliable delivery on deadline.',
+      'Web developer with 3 years of experience in React, Next.js, and TypeScript — plus Prisma, PostgreSQL, Auth.js, and REST APIs.',
     images: [
       {
         url: '/ventura-camping.webp',
         width: 1200,
         height: 630,
-        alt: 'Sepideh Nilforoushan — Frontend Developer portfolio',
+        alt: 'Sepideh Nilforoushan — Web Developer portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sepideh Nilforoushan | React & Next.js Frontend Developer',
+    title: 'Sepideh Nilforoushan | Web Developer — React, Next.js & TypeScript',
     description:
-      'React & Next.js frontend developer — banking UI experience, responsive interfaces, delivery on deadline.',
+      'Web developer with 3 years of experience — React, Next.js, TypeScript, REST APIs, Prisma, and PostgreSQL.',
     images: ['/ventura-camping.webp'],
   },
   robots: {

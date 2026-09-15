@@ -4,7 +4,11 @@ export type SkillIcon =
   | 'code'
   | 'settings_input_component'
   | 'palette'
-  | 'api';
+  | 'api'
+  | 'database'
+  | 'storage'
+  | 'lock'
+  | 'docker';
 
 export interface Profile {
   name: string;
@@ -72,42 +76,42 @@ export const navLinks = [
 ] as const;
 
 export const heroTrustPoints = [
-  'Responsive Design',
-  'Clean Code',
-  'Performance Focused',
-  'Modern UI Development',
+  '3 years of experience',
+  'React, Next.js & TypeScript',
+  'RESTful API integration',
+  'Responsive UI',
 ] as const;
 
 export const services = [
   {
-    title: 'React Development',
+    title: 'React & Next.js',
     description:
-      'Modern React apps with reusable components, clear structure, and UI that scales as your product grows.',
+      'Scalable React and Next.js applications with TypeScript, reusable components, and production-ready structure.',
     icon: 'react',
   },
   {
-    title: 'Next.js Development',
+    title: 'Responsive UI',
     description:
-      'Fast Next.js websites with strong performance, SEO-friendly rendering, and production-ready structure.',
-    icon: 'next',
-  },
-  {
-    title: 'Frontend Development',
-    description:
-      'Responsive interfaces built with HTML, CSS, JavaScript, and TypeScript — polished across every screen size.',
+      'Efficient, user-friendly interfaces that stay polished on every screen — with Tailwind, Material-UI, and SCSS.',
     icon: 'frontend',
   },
   {
-    title: 'Figma to Code',
+    title: 'REST API Integration',
     description:
-      'Pixel-accurate implementation of your Figma designs into clean, responsive React and Next.js UI.',
-    icon: 'figma',
+      'RESTful API integration with TanStack Query, React Hook Form, and clear loading and error states.',
+    icon: 'database',
   },
   {
-    title: 'UI Improvements',
+    title: 'Authentication',
     description:
-      'Refresh existing interfaces for better usability, responsiveness, and faster, more consistent user flows.',
-    icon: 'ui',
+      'Secure sign-in with Auth.js, hashed passwords, and per-user data isolation enforced on the server.',
+    icon: 'auth',
+  },
+  {
+    title: 'Performance & SSR',
+    description:
+      'Faster pages through code splitting, lazy loading, and server-side rendering — the same approach used in production banking UI.',
+    icon: 'fullstack',
   },
 ] as const;
 
@@ -128,9 +132,9 @@ export const whyClientsChooseMe = [
     icon: 'performance',
   },
   {
-    title: 'Pixel Perfect Development',
-    description: 'Careful attention to spacing, typography, and details so the build matches the design.',
-    icon: 'pixel',
+    title: 'Auth & Data Isolation',
+    description: 'Server-side authentication and per-user queries so accounts stay private and data stays correct.',
+    icon: 'auth',
   },
   {
     title: 'Strong Communication',
@@ -153,27 +157,46 @@ export const processSteps = [
   {
     step: '02',
     title: 'Planning the Architecture',
-    description: 'Map components and structure so the frontend stays scalable and easy to maintain.',
+    description: 'Map UI, APIs, and data models so the whole product stays scalable and easy to maintain.',
   },
   {
     step: '03',
     title: 'Development',
-    description: 'Build responsive UI, connect APIs when needed, and share progress as we go.',
+    description: 'Build the interface, wire REST APIs, and persist data with Prisma and PostgreSQL.',
   },
   {
     step: '04',
     title: 'Testing & Delivery',
-    description: 'Polish interactions, check responsiveness, and hand off a production-ready frontend.',
+    description: 'Polish flows, check auth and edge cases, and hand off a production-ready application.',
   },
 ] as const;
 
 export const techStack = [
   {
     category: 'Frontend',
-    items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS'],
+    items: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'JavaScript',
+      'Redux',
+      'Zustand',
+      'TanStack Query',
+      'React Hook Form',
+      'Formik',
+      'Material-UI',
+      'Styled-Components',
+      'Tailwind CSS',
+      'SCSS',
+      'Bootstrap',
+    ],
+  },
+  {
+    category: 'Backend',
+    items: ['Prisma', 'PostgreSQL', 'Auth.js', 'REST APIs', 'Server Actions'],
   },
   {
     category: 'Tools',
-    items: ['Git', 'GitHub', 'Vercel', 'Figma'],
+    items: ['Git', 'GitHub', 'Docker', 'Vercel', 'Figma'],
   },
 ] as const;
