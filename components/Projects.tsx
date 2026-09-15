@@ -28,7 +28,7 @@ export function Projects({ projects, profile }: ProjectsProps) {
           <SectionHeading
             label="Selected work"
             title="Featured projects"
-            description="Projects from my resume — Ventura, FlowBoard, Weather Forecast, and Luxury Home."
+            description="Projects from my resume — Ventura, FlowBoard, Luxury Home, and Weather Forecast."
           />
           <a
             href={profile.github}

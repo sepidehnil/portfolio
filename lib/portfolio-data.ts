@@ -53,18 +53,6 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 3,
-      title: 'Weather Forecast',
-      description:
-        'This website is a weather forecasting platform that allows users to register and search for weather information for specific countries. It leverages JavaScript, Tailwind CSS, animations, and a REST API to fetch weather data.',
-      tags: ['JavaScript', 'Tailwind CSS', 'REST API'],
-      image:
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuBdZqZfsDiy3-wrnuvYGJz4G_ODl_YjUMMmXerKzWYlpRjI_dxnFvx5xZdy22aQve6L6YCz5Janjoz0EXpLvJc0YzoMQ-4uRMpmO_7_QD26oRFgg4YugTjfj6ewRpiDBiZtLwUMeYeWzkGGcZo_6ooajo6NEMu79vcwiI7LojCqRgcURXVVXSCunmJ190VxdUHlnSvMra1e82ck7ATok0MGlB6UkyCvus4czZrVWYXWfhlp229qHSipKp9Qsf0PEeK3XXc7BkBHn3Q',
-      liveUrl: 'https://weather-forecast-jw9qduwtc-gfdg3.vercel.app/',
-      githubUrl: 'https://github.com/sepidehnil/Weather-Forecast',
-      accentColor: '#5CD5F6',
-    },
-    {
-      id: 4,
       title: 'Luxury Home Online Shop',
       description:
         'My online shop combines client-side and server-side functionalities to create a comprehensive e-commerce platform, providing users with a seamless shopping experience while enabling administrators to efficiently manage products, orders, and user accounts.',
@@ -74,6 +62,18 @@ export const portfolioData: PortfolioData = {
       liveUrl: null,
       githubUrl: 'https://github.com/sepidehnil/Luxury-Home-Online-Shop',
       accentColor: '#E8C47A',
+    },
+    {
+      id: 4,
+      title: 'Weather Forecast',
+      description:
+        'This website is a weather forecasting platform that allows users to register and search for weather information for specific countries. It leverages JavaScript, Tailwind CSS, animations, and a REST API to fetch weather data.',
+      tags: ['JavaScript', 'Tailwind CSS', 'REST API'],
+      image:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuBdZqZfsDiy3-wrnuvYGJz4G_ODl_YjUMMmXerKzWYlpRjI_dxnFvx5xZdy22aQve6L6YCz5Janjoz0EXpLvJc0YzoMQ-4uRMpmO_7_QD26oRFgg4YugTjfj6ewRpiDBiZtLwUMeYeWzkGGcZo_6ooajo6NEMu79vcwiI7LojCqRgcURXVVXSCunmJ190VxdUHlnSvMra1e82ck7ATok0MGlB6UkyCvus4czZrVWYXWfhlp229qHSipKp9Qsf0PEeK3XXc7BkBHn3Q',
+      liveUrl: 'https://weather-forecast-jw9qduwtc-gfdg3.vercel.app/',
+      githubUrl: 'https://github.com/sepidehnil/Weather-Forecast',
+      accentColor: '#5CD5F6',
     },
   ],
   experiences: [
